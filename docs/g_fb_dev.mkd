@@ -1,0 +1,43 @@
+#### Metadata
+
+* Btn: `g-fb-dev`
+* First Release: 2010-01-11
+* Code Last Updated:
+* Doc Last Updated:
+* Status: Experimental
+
+#### Description
+
+**g-fb-dev** is a library relating to [*FeedBurner API*][fb-api]. This page is written for web developers.
+
+#### Documentation
+
+Move your mouse cursor over the number, you can get more detail.
+
+##### Loading Library
+
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script src="http://lilbtn.appspot.com/g/fb/fb.js" type="text/javascript"></script>
+
+##### Get Feed Data
+
+You can use `lilbtn_g_fb_get_feed_data` to retrieve feed data from [FeedBurner Awareness API][fb-aware].
+
+	lilbtn_g_fb_get_feed_data(feed_url, function(rsp) {
+	  if (rsp.error || rsp.stat != 'ok') {
+	    // Something went wrong with YQL or FeedBurner API
+		// rsp.error is from YQL
+		// rsp.err is from FeedBurner API
+        var errmsg = ((rsp.error) ? rsp.error.description : rsp.err.msg) + ';
+		alert(errmsg)
+        return;
+        }
+      var data = rsp.feed.entry;
+	  alert(data.circulation);
+	  alert(data.hits);
+	  alert(data.reach);
+	  alert(data.date);
+	  });
+
+[fb-api]: http://code.google.com/apis/feedburner/developers_guide.html
+[fb-aware]: http://code.google.com/apis/feedburner/awareness_api.html#current_basic_feed_awareness_data

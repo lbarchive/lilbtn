@@ -1,9 +1,13 @@
-#### Google
+#### [Google][g]
 
-##### FeedBurner
+##### [FeedBurner][g-fb]
 
 * [`g-fb-text`][g-fb-text] Subscribers Count in text
 * [`g-fb-feedcount`][g-fb-feedcount] FeedCount Chicklet in pure HTML + CSS
+* [`g-fb-dev`][g-fb-dev] Developer Docs
 
+[g]: http://lilbtn.blogspot.com/search/label/CatGoogle
+[g-fb]: http://lilbtn.blogspot.com/search/label/CatFeedBurner
 [g-fb-text]: http://lilbtn.blogspot.com/2010/01/g-fb-text-google-feedburner-subscriber.html
 [g-fb-feedcount]: http://lilbtn.blogspot.com/2010/01/g-fb-feedcount-google-feedburner.html
+[g-fb-dev]: http://lilbtn.blogspot.com/2010/01/g-fb-dev-google-feedburner-dev.html
