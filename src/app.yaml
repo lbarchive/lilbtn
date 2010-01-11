@@ -1,0 +1,35 @@
+application: lilbtn
+version: 1
+runtime: python
+api_version: 1
+
+default_expiration: "14d"
+
+handlers:
+
+- url: /robots.txt
+  static_files: static/robots.txt
+  upload: static/robots.txt
+
+- url: /COPYING
+  static_files: static/COPYING
+  upload: static/COPYING
+  mime_type: text/plain
+
+- url: /favicon.ico
+  static_files: static/favicon.ico
+  upload: static/favicon.ico
+  mime_type: image/vnd.microsoft.icon
+
+- url: /css
+  static_dir: static/css
+- url: /img
+  static_dir: static/img
+- url: /js
+  static_dir: static/js
+  
+- url: /g
+  static_dir: static/g
+
+- url: /(donate|help)?
+  script: index.py

@@ -1,0 +1,110 @@
+#### Metadata
+
+* Btn: `g-fb-text`
+* First Release: 2010-01-11
+* Code Last Updated:
+* Doc Last Updated:
+* Status: Experimental
+
+#### Description
+
+**g-fb-text** is for generating *FeedBurner Subscribers Count* in plain text, therefore it could be seamlessly embedded into your text on your website.
+
+#### Demonstration
+
+Move your mouse cursor over the number, you can get more detail.
+
+##### Default
+
+This blog has <span id="lilbtn_g_fb_text"></span> subscribers.
+
+<script type="text/javascript">
+lilbtn_g_fb_text_render('http://feeds.feedburner.com/lilbtnBlog');
+</script>
+
+	This blog has <span id="lilbtn_g_fb_text"></span> subscribers.
+	
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script src="http://lilbtn.appspot.com/g/fb/fb.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	lilbtn_g_fb_text_render('http://feeds.feedburner.com/lilbtnBlog');
+	</script>
+
+##### More Than One Subscribers Count
+
+This blog has <span id="lilbtn_g_fb_text_1"></span> subscribers. Another blog has <span id="lilbtn_g_fb_text_2"></span> subscribers.
+
+<script type="text/javascript">
+lilbtn_g_fb_text_render('http://feeds.feedburner.com/lilbtnBlog', 'lilbtn_g_fb_text_1');
+lilbtn_g_fb_text_render('http://feeds.feedburner.com/makeYJL', 'lilbtn_g_fb_text_2');
+</script>
+
+	This blog has <span id="lilbtn_g_fb_text_1"></span> subscribers. Another blog has <span id="lilbtn_g_fb_text_2"></span> subscribers.
+
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script src="http://lilbtn.appspot.com/g/fb/fb.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	lilbtn_g_fb_text_render('http://feeds.feedburner.com/lilbtnBlog', 'lilbtn_g_fb_text_1');
+	lilbtn_g_fb_text_render('http://feeds.feedburner.com/makeYJL', 'lilbtn_g_fb_text_2');
+	</script>
+
+##### Localization
+
+本網誌有 <span id="lilbtn_g_fb_text_zh"></span> 位讀者。
+
+<script type="text/javascript">
+lilbtn_g_fb_text_render('http://feeds.feedburner.com/lilbtnBlog', 'lilbtn_g_fb_text_zh', {subscribers: '讀者',  hits: '閱覽數', reach: '點閱數', on: '於'});
+</script>
+
+	本網誌有 <span id="lilbtn_g_fb_text_zh"></span> 位讀者。
+
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script src="http://lilbtn.appspot.com/g/fb/fb.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	lilbtn_g_fb_text_render('http://feeds.feedburner.com/lilbtnBlog', 'lilbtn_g_fb_text_zh', {subscribers: '讀者',  hits: '閱覽數', reach: '點閱數', on: '於'});
+	</script>
+
+#### Installation
+
+The basic install is easy, you only need these:
+	
+	<span id="lilbtn_g_fb_text"></span>
+	
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script src="http://lilbtn.appspot.com/g/fb/fb.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	lilbtn_g_fb_text_render('http://feeds.feedburner.com/<feed_title>');
+	</script>
+
+The first one is where the number should be put into, and `lilbtn_g_fb_text_render` is the main function to do the work.
+
+#### Customization
+
+##### Loading Message
+
+You can also give a nice loading message and link it to your feed like:
+
+	<a href="http://feeds.feedburner.com/<feed_title>"><span id="lilbtn_g_fb_text">Loading...</span></a>
+
+##### Different container
+
+By default, the number goes to element whose ID is `lilbtn_g_fb_text`, but you can change to whatever your like. You only need to supply to the render function.
+
+	<span id="my_container"></span>
+	<script type="text/javascript">
+	lilbtn_g_fb_text_render('http://feeds.feedburner.com/<feed_title>', 'my_container');
+	</script>
+
+Moreover, you don't have to use `<span>`, `<div>`, or `<a>`, also work. Therefore, the customization in previous section can be just:
+
+	<a href="http://feeds.feedburner.com/<feed_title>" id="lilbtn_g_fb_text">Loading...</a>
+
+##### Localization
+
+Localization section of Demonstration should explain all.
+
+##### Style
+
+After the render function render, it will assign the container a `lilbtn_g_fb_text` class. It looks like:
+
+	<span id="blah" class="lilbtn_g_fb_text"></span>

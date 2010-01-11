@@ -1,0 +1,121 @@
+/*
+Copyright (c) 2010, Yu-Jie Lin
+All rights reserved.
+
+This file is licensed under the New BSD License,
+see <http://lilbtn.appspot.com/COPYING>
+
+Website: lil.btn <http://lilbtn.appspot.com>
+Author : Yu-Jie Lin <http://j.mp/livibetter>
+*/
+
+body {
+  font-family: "Times New Roman", Serif;
+  }
+
+h2,
+h2 a[name] {
+  text-decoration: none;
+  }
+
+h3,
+h3 a[name] {
+  text-decoration: none;
+  }
+
+a {
+  text-decoration: none;
+  }
+
+a:hover {
+  text-decoration: underline;
+  color: #448;
+  }
+
+a img {
+  border: none;
+  }
+
+#topbar {
+  background-color: #ccc;
+  -moz-border-radius: 0 0 0 5px;
+  -webkit-border-radius: 0 0 0 5px;
+  border-radius: 0 0 0 5px;
+  font-family: Sans-Serif;
+  font-size: small;
+  margin: 0;
+  padding: 3px 3px 5px 5px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  }
+
+div.addthis_toolbox {
+  display: inline-block;
+  vertical-align: middle;
+  }
+
+#wrap {
+  width: 600px;
+  margin: auto;
+  text-align: center;
+  }
+
+#header>.title a {
+  background: url(http://lilbtn.appspot.com/img/logo-80.png) top left no-repeat;
+  color: #000;
+  font-family: "Courier New";
+  font-size: 80px;
+  padding: 0 80px;
+  }
+
+#header>.title a:hover {
+  color: #448;
+  text-decoration: none;
+  }
+
+div.btn {
+  font-family: Sans;
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-bottom: 1em;
+  }
+
+div.btn a {
+  color: #f88;
+  }
+
+.nav a {
+  font-family: Sans;
+  font-size: 1.25em;
+  font-weight: bold;
+  color: #393;
+  margin: 0 0.5em;
+  }
+
+.nav a:hover {
+  color: #448;
+  }
+
+#content {
+  text-align: left;
+  margin: 10px auto;
+  }
+
+#footer {
+  clear: both;
+  margin-top: 1em;
+  color: #777;
+  font-family: Arial;
+  font-size: 12px;
+  padding-bottom: 1em;
+  }
+
+/* Misc
+----------------------------------------------- */
+#lilbtn_g_fb_feedcount_lilbtn span {
+-moz-border-radius:3px;
+-webkit-border-radius:3px;
+border-radius:3px;
+line-height:12px;
+}

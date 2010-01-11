@@ -1,0 +1,64 @@
+#### Idea
+
+lil∘btn (also noted as lil.btn or lilbtn) means Little Button and that is the original idea for creating lil∘btn. A while ago, I began to dislike Blogger's [Follower Gadget][follower-gadget], it's huge! I just want a small button and followed by a current followers count. But you can't have it unless you can do some programming. I want a small one because I want to keep my blogs clean and simple. I believe many Bloggers bloggers has same thought. Therefore, the idea started to form inside my head. It's not just the Follower gadget, there are more we can do about. And this is not all about button, anything is needed, a script, tiny things, they can be here someday. Feel free to [provide your ideas][group].
+
+So, that's why this is called lil∘btn.
+
+lil∘btn is a free service, created by [Yu-Jie Lin][yjl].
+
+[follower-gadget]: http://buzz.blogger.com/2008/08/show-off-your-followers.html
+[yjl]: http://j.mp/livibetter
+
+#### Concept
+
+I want to provide simple, quick, and elegant solutions.
+
+Generally, the code should work on all major web browsers since it uses [jQuery][jquery], but you may still encounter problems by the difference of JavaScript engines. I test the code in [Google Chrome][chrome] mainly as well as [Firefox][firefox] 3 and [Opera][opear] 10. *No tests* on Microsoft Internet Explorer since it does not support Linux[^noie].
+
+I don't do things as some developers do, who puts directly link into their creation. I personally think that's a strongly forcible advertisements/link back on your website, and that ruins your websites. If you have such codes, contact me, I will develop one just for you and that does not uglify your website.
+
+It will only show a link when the code runs into trouble, such as: errors on connecting, or you do not install the code correctly. So you can have idea where to seek for help.
+
+[jquery]: http://jquery.com
+[chrome]: http://www.google.com/chrome
+[firefox]: http://www.mozilla.com/firefox/
+[opear]: http://www.opera.com/
+[^noie]: It is highly impossible that Microsoft would develop for Linux nowadays.
+
+#### Files
+
+The files of lil.btn are hosted on [App Engine][lilbtn], the code project is hosted on [Google Code][code], and documents and blog are hosted right here.
+
+##### Docs
+
+You may ask why mixed up blog posts and documents, I had thought about to write a simple CMS (Content Management System) on App Engine, but I really don't know if that's worth. So currently the documents will be released as blog posts.
+
+##### Self-hosting
+
+You are welcome to grab the code and put on your server, but it may or may not work. If it doesn't work, [drop me a line][group], I will try to make it work.
+
+If you want to introduce my code to more people, *please*, at least, provide the [discussion group][group] to your people, please don't try to answer their questions/problems on installing, redirect them to discussion group. I have another [creation][brps], at first, people started to hard-copying my installation how-to. I don't mind at all, even they don't even credit me and speak as they were the creator. But when they started to answer question as if they were the author, I couldn't stand with it anymore because they generally answered those question incorrectly.
+
+So, please at least provide [discussion group][group] link to your readers.
+
+[brps]: http://brps.appspot.com
+
+#### Support
+
+##### To You
+
+There is a [support/discussion group][group], where you can post anything. Asking for help/troubleshooting, suggesting new feature, reporting bugs. Be sure you have read the posting guidelines before you post.
+
+##### To Me
+
+I accept donation and also I put advertisements on. The App Engine has 1GB/day outgoing bandwidth free quota, I don't know if it will run out someday, I want to keep this service free. If it runs out of quota, so does it. I will also put on ads and hope it will generate some money so I can pay if lil.btn does run out of quota.
+
+#### Licenses
+
+The source code of lil.btn is licensed under the [New BSD License][COPYING], as for the contents (blog posts and docs) is licensed under the [Creative Commons 3.0 BY-SA][ccbysa].
+
+[group]: http://groups.google.com/group/lilbtn
+[lilbtn]: http://lilbtn.appspot.com
+[COPYING]: http://lilbtn.appspot.com/COPYING
+[code]: http://code.google.com/p/lilbtn/
+[ccbysa]: http://creativecommons.org/licenses/by-sa/3.0/

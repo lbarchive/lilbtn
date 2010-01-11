@@ -1,0 +1,45 @@
+/* 
+Copyright (c) 2010, Yu-Jie Lin
+All rights reserved.
+
+This file is licensed under the New BSD License,
+see <http://lilbtn.appspot.com/COPYING>
+
+Website: lil.btn <http://lilbtn.appspot.com>
+Author : Yu-Jie Lin <http://j.mp/livibetter>
+*/
+
+span.lilbtn_g_fb_feedcount_outer{
+background-color:#9cf;
+border-top:1px solid #b2d8ff;
+border-right:1px solid #688bae;
+border-bottom:1px solid #688bae;
+border-left:1px solid #b2d8ff;
+color:#444;
+display:inline-block;
+font-family:"Courier New";
+font-size:10px;
+line-height:16px;
+padding:2px;
+text-decoration:none;
+}
+span.lilbtn_g_fb_feedcount_count{
+background-color:#cfe7ff;
+border-top:1px solid #8da9c4;
+border-right:1px solid #e7f3ff;
+border-bottom:1px solid #c5e2ff;
+border-left:1px solid #768089;
+display:inline-block;
+padding:0 1px;
+text-align:right;
+text-decoration:none;
+width:32px;
+}
+span.lilbtn_g_fb_feedcount_text{
+border:1px solid transparent;
+display:inline-block;
+padding:0 1px;
+text-align:center;
+text-decoration:none;
+min-width:40px;
+}

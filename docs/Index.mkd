@@ -1,0 +1,9 @@
+#### Google
+
+##### FeedBurner
+
+* [`g-fb-text`][g-fb-text] Subscribers Count in text
+* [`g-fb-feedcount`][g-fb-feedcount] FeedCount Chicklet in pure HTML + CSS
+
+[g-fb-text]: http://lilbtn.blogspot.com/2010/01/g-fb-text-google-feedburner-subscriber.html
+[g-fb-feedcount]: http://lilbtn.blogspot.com/2010/01/g-fb-feedcount-google-feedburner.html
