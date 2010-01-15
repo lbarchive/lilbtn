@@ -26,7 +26,7 @@ class StaticPage(webapp.RequestHandler):
 
     render_write({}, pagename + '.html', self.request, self.response)
 
-  def head(self):
+  def head(self, pagename):
 
     pass
 
