@@ -162,6 +162,7 @@ word-wrap:normal;
 -webkit-border-radius:5px;
 border-radius:5px;
 padding:0 5px 5px 5px;
+overflow-x: auto;
 }
 .post-footer {
 margin: .75em 0;
