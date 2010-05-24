@@ -2,12 +2,12 @@
  * @preserve jknav
  * @name      jquery.jknav.js
  * @author    Yu-Jie Lin http://lmgtfy.com/?q=livibetter
- * @version   0.1
+ * @version   0.1.0.1
  * @date      05-24-2010
  * @copyright (c) 2010 Yu-Jie Lin <livibetter@gmail.com>
  * @license   BSD License
- * @homepage
- * @example
+ * @homepage  http://lilbtn.blogspot.com/2010/05/js-jquery-jknav-jk-binding-navigation.html
+ * @example   http://lilbtn.googlecode.com/hg/src/static/js/jquery/jquery.jknav.demo.html
 */
 (function ($) {
 	/**
@@ -101,7 +101,6 @@
 	 */
 	function keyup(e, opts) {
 		var ch = String.fromCharCode(e.keyCode).toLowerCase();
-		console.log(ch, opts.name);
 		if (ch == opts.up.toLowerCase() || ch == opts.down.toLowerCase()) {
 			if (opts.reevaluate)
 				$.jknav.index[opts.name] = null;
