@@ -2,8 +2,8 @@
  * @preserve jknav
  * @name      jquery.jknav.js
  * @author    Yu-Jie Lin http://lmgtfy.com/?q=livibetter
- * @version   0.1.0.1
- * @date      05-24-2010
+ * @version   0.1.0.2
+ * @date      05-26-2010
  * @copyright (c) 2010 Yu-Jie Lin <livibetter@gmail.com>
  * @license   BSD License
  * @homepage  http://lilbtn.blogspot.com/2010/05/js-jquery-jknav-jk-binding-navigation.html
@@ -100,6 +100,8 @@
 	 * @param {Object} opts Options
 	 */
 	function keyup(e, opts) {
+		if (e.srcElement.tagName != 'BODY')
+			return
 		var ch = String.fromCharCode(e.keyCode).toLowerCase();
 		if (ch == opts.up.toLowerCase() || ch == opts.down.toLowerCase()) {
 			if (opts.reevaluate)
