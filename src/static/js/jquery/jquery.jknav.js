@@ -2,8 +2,8 @@
  * @preserve jknav
  * @name      jquery.jknav.js
  * @author    Yu-Jie Lin http://lmgtfy.com/?q=livibetter
- * @version   0.1.0.2
- * @date      05-26-2010
+ * @version   0.2
+ * @date      09-15-2010
  * @copyright (c) 2010 Yu-Jie Lin <livibetter@gmail.com>
  * @license   BSD License
  * @homepage  http://lilbtn.blogspot.com/2010/05/js-jquery-jknav-jk-binding-navigation.html
@@ -64,9 +64,10 @@
 		var index = $.jknav.index[opts.name];
 		if (index == null) {
 			// Initialize index
-			var top = $('body').scrollTop();
+			var top = $($.jknav.TARGET).scrollTop();
 			$.each($.jknav.items[opts.name], function (idx, item) {
-				var item_top = $(item).offset().top;
+				// Got a strange case: top = 180, item_top = 180.35...
+				var item_top = Math.floor($(item).offset().top);
 				if (top >= item_top)
 					index = idx;
 				});
@@ -79,7 +80,7 @@
 			else {
 				if (offset > 0 && ++index >= $.jknav.items[opts.name].length)
 					index = 0
-				else if (offset < 0 && top == $($.jknav.items[opts.name][index]).offset().top && --index < 0)
+				else if (offset < 0 && top == Math.floor($($.jknav.items[opts.name][index]).offset().top) && --index < 0)
 					index = $.jknav.items[opts.name].length - 1;
 				}
 			}
@@ -100,7 +101,7 @@
 	 * @param {Object} opts Options
 	 */
 	function keyup(e, opts) {
-		if (e.srcElement.tagName != 'BODY')
+		if (e.target.tagName.toLowerCase() != $.jknav.TARGET)
 			return
 		var ch = String.fromCharCode(e.keyCode).toLowerCase();
 		if (ch == opts.up.toLowerCase() || ch == opts.down.toLowerCase()) {
@@ -108,10 +109,10 @@
 				$.jknav.index[opts.name] = null;
 			var index = calc_index((ch == opts.down.toLowerCase()) ? 1 : -1, opts);
 			var $item = $($.jknav.items[opts.name][index][0]);
-			$('body').animate(
+			$($.jknav.TARGET).animate(
 				{
-					scrollLeft: $item.offset().left,
-					scrollTop: $item.offset().top
+					scrollLeft: Math.floor($item.offset().left),
+					scrollTop: Math.floor($item.offset().top)
 					},
 				opts.speed,
 				opts.easing,
@@ -133,6 +134,7 @@
 			speed: 'normal',
 			reevaluate: false
 			},
+		TARGET: ($.browser.mozilla)?'html':'body',
 		/**
 		 * Initialization function
 		 * @param {Object} options Options
@@ -140,7 +142,7 @@
 		init: function (options) {
 			var opts = $.extend($.extend({}, $.jknav.default_options), options);
 			$.jknav.index[opts.name] = null;
-			$('body').keyup(function (e) {
+			$($.jknav.TARGET).keyup(function (e) {
 				keyup(e, opts);
 				});
 			}
