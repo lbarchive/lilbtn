@@ -2,8 +2,8 @@
 
  * Btn: `js-jquery-jknav`
  * First Release: 2010-05-24
- * Code Last Updated:
- * Doc Last Updated:
+ * Code Last Updated: 2010-09-15
+ * Doc Last Updated: 2010-09-15
  * Status: Experimental
 
 #### Description
@@ -54,5 +54,9 @@ You can assign a `callback` function, which will be invoked after jknav navigate
       });
 
 You can change the default options. `up` and `down` are the keys to trigger navigation. `name` is the navigation list's name. `easing` and `speed` are for navigation effect. If `reevaluate` is `true`, then jknav uses current position to decide next item to navigate to; or based on the internal `index` variable.
+
+#### Known Issues
+
+ * Opera is not supported.
 
 <!-- Btn, jQuery, navigation -->
