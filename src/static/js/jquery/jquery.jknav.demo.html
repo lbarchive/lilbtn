@@ -20,6 +20,9 @@ $(function () {
 	$('h2').jknav(hl);
 	$.jknav.init({up: 'l', down: 'h', easing: 'easeOutBounce', speed: 'slow', reevaluate: false});
 
+	$('h2').jknav(hl, 'h2-nocircular');
+	$.jknav.init({name: 'h2-nocircular', up: 'u', down: 'd', easing: 'easeOutBounce', speed: 'slow', circular: false, reevaluate: false});
+
 	$('h2,h3').jknav(hl, 'h2h3');
 	$.jknav.init({name: 'h2h3', reevaluate: true});
 	});
@@ -29,6 +32,7 @@ $(function () {
 <h1>jknav demo page</h1>
 <p>j, k - move between h2, h3 (easing: swing, speed: normal, reevalute: true)</p>
 <p>h, l - move between h2 (easing: easeOutBounce, speed: slow, reevalute: false)</p>
+<p>u, d - move between h2 (easing: easeOutBounce, speed: slow, circular: false, reevalute: false)</p>
 <h2>Header 2:1</h2>
 <h3>Header 3:1</h3>
 Lorem ipsum dolor sit amet, urna magna semper pariatur montes, ligula wisi, ligula ut donec nullam imperdiet, fermentum enim. Imperdiet integer ipsum, laoreet praesent eleifend donec. Sapien vestibulum, dolor laoreet semper non, iaculis in, lobortis dui cras commodo ipsum, venenatis feugiat aliquet. Mollis pede ultricies. Eius imperdiet nulla. Neque ut lorem venenatis sit, alias felis vitae phasellus sed dolor scelerisque, metus neque, lorem quis molestie. Fusce diam feugiat vivamus urna, sed id in sed risus penatibus quis, dictumst nibh fringilla turpis commodo ac massa, adipiscing pede sapien nullam et ut pede, eleifend aliquam ipsum. Ipsum metus iaculis magna, id sed quisque morbi. Sit sociis suspendisse commodo amet in, etiam wisi, consectetuer faucibus turpis ipsum mi, fermentum aenean. Egestas proin at. Euismod proin nec, id vitae in nam libero, tellus ante. Luctus dictum, urna ligula ligula accumsan laoreet lobortis aliquam, ultricies eget donec vitae vivamus.

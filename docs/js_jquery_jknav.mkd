@@ -2,8 +2,8 @@
 
  * Btn: `js-jquery-jknav`
  * First Release: 2010-05-24
- * Code Last Updated: 2010-09-15
- * Doc Last Updated: 2010-09-15
+ * Code Last Updated: 2010-09-18 (Version 0.3)
+ * Doc Last Updated: 2010-09-18
  * Status: Experimental
 
 #### Description
@@ -45,18 +45,25 @@ You can assign a `callback` function, which will be invoked after jknav navigate
 ##### `$.jknav.init()`
 
     $.jknav.init({
-     	up: 'k',
-			down: 'j',
-			name: 'default',
-			easing: 'swing',
-			speed: 'normal',
-			reevaluate: false
+      up: 'k',
+      down: 'j',
+      name: 'default',
+      easing: 'swing',
+      speed: 'normal',
+      circular: true,
+      reevaluate: false
       });
 
-You can change the default options. `up` and `down` are the keys to trigger navigation. `name` is the navigation list's name. `easing` and `speed` are for navigation effect. If `reevaluate` is `true`, then jknav uses current position to decide next item to navigate to; or based on the internal `index` variable.
+You can change the default options:
+
+ * `up` and `down` are the keys to trigger navigation.
+ * `name` is the navigation list's name.
+ * `easing` and `speed` are for navigation effect.
+ * `circular` indicates if it's a circular navigation.
+ * If `reevaluate` is `true`, then jknav uses current position to decide next item to navigate to; or based on the internal `index` variable.
 
 #### Known Issues
 
- * Opera is not supported.
+ * Internet Explorer and Opera are not supported.
 
 <!-- Btn, jQuery, navigation -->

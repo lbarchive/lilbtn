@@ -2,7 +2,7 @@
  * @preserve jknav
  * @name      jquery.jknav.js
  * @author    Yu-Jie Lin http://lmgtfy.com/?q=livibetter
- * @version   0.2
+ * @version   0.3
  * @date      09-15-2010
  * @copyright (c) 2010 Yu-Jie Lin <livibetter@gmail.com>
  * @license   BSD License
@@ -85,6 +85,8 @@
 				}
 			}
 		else {
+			if (!opts.circular && ((index == 0 && offset == -1) || (index == $.jknav.items[opts.name].length - 1 && offset == 1)))
+				return index;
 			index += offset;
 			if (index >= $.jknav.items[opts.name].length)
 				index = 0;
@@ -132,6 +134,7 @@
 			name: 'default',
 			easing: 'swing',
 			speed: 'normal',
+			circular: true,
 			reevaluate: false
 			},
 		TARGET: ($.browser.mozilla)?'html':'body',
