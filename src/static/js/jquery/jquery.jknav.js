@@ -2,8 +2,8 @@
  * @preserve jknav
  * @name      jquery.jknav.js
  * @author    Yu-Jie Lin http://lmgtfy.com/?q=livibetter
- * @version   0.3
- * @date      09-15-2010
+ * @version   0.3.1
+ * @date      09-20-2010
  * @copyright (c) 2010 Yu-Jie Lin <livibetter@gmail.com>
  * @license   BSD License
  * @homepage  http://lilbtn.blogspot.com/2010/05/js-jquery-jknav-jk-binding-navigation.html
@@ -103,7 +103,7 @@
 	 * @param {Object} opts Options
 	 */
 	function keyup(e, opts) {
-		if (e.target.tagName.toLowerCase() != $.jknav.TARGET)
+		if (e.target.tagName.toLowerCase() != $.jknav.TARGET_KEYUP)
 			return
 		var ch = String.fromCharCode(e.keyCode).toLowerCase();
 		if (ch == opts.up.toLowerCase() || ch == opts.down.toLowerCase()) {
@@ -137,7 +137,8 @@
 			circular: true,
 			reevaluate: false
 			},
-		TARGET: ($.browser.mozilla)?'html':'body',
+		TARGET_KEYUP: ($.browser.mozilla)?'html':'body',
+		TARGET: ($.browser.mozilla || $.browser.msie)?'html':'body',
 		/**
 		 * Initialization function
 		 * @param {Object} options Options
@@ -145,7 +146,7 @@
 		init: function (options) {
 			var opts = $.extend($.extend({}, $.jknav.default_options), options);
 			$.jknav.index[opts.name] = null;
-			$($.jknav.TARGET).keyup(function (e) {
+			$($.jknav.TARGET_KEYUP).keyup(function (e) {
 				keyup(e, opts);
 				});
 			}

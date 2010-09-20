@@ -2,8 +2,8 @@
 
  * Btn: `js-jquery-jknav`
  * First Release: 2010-05-24
- * Code Last Updated: 2010-09-18 (Version 0.3)
- * Doc Last Updated: 2010-09-18
+ * Code Last Updated: 2010-09-20 (Version 0.3.1)
+ * Doc Last Updated: 2010-09-20
  * Status: Experimental
 
 #### Description
@@ -64,6 +64,6 @@ You can change the default options:
 
 #### Known Issues
 
- * Internet Explorer and Opera are not supported.
+ * Opera is not supported.
 
 <!-- Btn, jQuery, navigation -->
