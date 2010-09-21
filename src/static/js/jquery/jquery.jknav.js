@@ -2,14 +2,24 @@
  * @preserve jknav
  * @name      jquery.jknav.js
  * @author    Yu-Jie Lin http://lmgtfy.com/?q=livibetter
- * @version   0.3.1
- * @date      09-20-2010
+ * @version   0.4
+ * @date      09-21-2010
  * @copyright (c) 2010 Yu-Jie Lin <livibetter@gmail.com>
  * @license   BSD License
  * @homepage  http://lilbtn.blogspot.com/2010/05/js-jquery-jknav-jk-binding-navigation.html
  * @example   http://lilbtn.googlecode.com/hg/src/static/js/jquery/jquery.jknav.demo.html
 */
 (function ($) {
+	/**
+	 * Print out debug infomation via console object
+	 * @param {String} debug information
+	 */
+	function log (message) {
+		var console = window.console;
+		if ($.jknav.DEBUG && console && console.log)
+			console.log('jknav: ' + message);
+		}
+
 	/**
 	 * Add jQuery objects to navgation list
 	 *
@@ -62,9 +72,11 @@
 	 */
 	function calc_index(offset, opts) {
 		var index = $.jknav.index[opts.name];
+		log('Calculating index for ' + opts.name + ', current index = ' + index);
 		if (index == null) {
 			// Initialize index
 			var top = $($.jknav.TARGET).scrollTop();
+			log($.jknav.TARGET + ' top = ' + top);
 			$.each($.jknav.items[opts.name], function (idx, item) {
 				// Got a strange case: top = 180, item_top = 180.35...
 				var item_top = Math.floor($(item).offset().top);
@@ -93,6 +105,7 @@
 			if (index < 0)
 				index = $.jknav.items[opts.name].length - 1;
 			}
+		log('new index = ' + index);
 		$.jknav.index[opts.name] = index;
 		return index;
 		}
@@ -103,9 +116,12 @@
 	 * @param {Object} opts Options
 	 */
 	function keyup(e, opts) {
-		if (e.target.tagName.toLowerCase() != $.jknav.TARGET_KEYUP)
+		if (e.target.tagName.toLowerCase() == 'input') {
+			log('keyup: ' + e.target.tagName + ', target is INPUT ignored.');
 			return
+			}
 		var ch = String.fromCharCode(e.keyCode).toLowerCase();
+		log('keyup: ' + e.target.tagName + ', key: ' + ch);
 		if (ch == opts.up.toLowerCase() || ch == opts.down.toLowerCase()) {
 			if (opts.reevaluate)
 				$.jknav.index[opts.name] = null;
@@ -137,8 +153,11 @@
 			circular: true,
 			reevaluate: false
 			},
-		TARGET_KEYUP: ($.browser.mozilla)?'html':'body',
-		TARGET: ($.browser.mozilla || $.browser.msie)?'html':'body',
+		DEBUG: false,
+		TARGET_KEYUP: 'html',
+		// IE, Firefox, and Opera must use <html> to scroll
+		// Webkit must use <bod> to scroll
+		TARGET: (!$.browser.webkit)?'html':'body',
 		/**
 		 * Initialization function
 		 * @param {Object} options Options
@@ -149,6 +168,7 @@
 			$($.jknav.TARGET_KEYUP).keyup(function (e) {
 				keyup(e, opts);
 				});
+			log('new set "' + opts.name + '" initialzed.');
 			}
 		};
 	})(jQuery);

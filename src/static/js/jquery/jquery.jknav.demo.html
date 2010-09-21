@@ -6,7 +6,7 @@ body {width: 600px}
 </style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script>
-<script src="jquery.jknav.min.js"></script>
+<script src="jquery.jknav.js"></script>
 <script>
 function hl (item) {
 	var $item = $(item);
@@ -17,6 +17,8 @@ function hl (item) {
 	}
 
 $(function () {
+	$.jknav.DEBUG = true;
+
 	$('h2').jknav(hl);
 	$.jknav.init({up: 'l', down: 'h', easing: 'easeOutBounce', speed: 'slow', reevaluate: false});
 
