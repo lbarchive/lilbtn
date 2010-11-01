@@ -1,12 +1,12 @@
 /**
  * @preserve jknav
  * @name      jquery.jknav.js
- * @author    Yu-Jie Lin http://lmgtfy.com/?q=livibetter
- * @version   0.4
- * @date      09-21-2010
+ * @author    Yu-Jie Lin http://j.mp/Google-livibetter
+ * @version   0.5
+ * @date      11-01-2010
  * @copyright (c) 2010 Yu-Jie Lin <livibetter@gmail.com>
  * @license   BSD License
- * @homepage  http://lilbtn.blogspot.com/2010/05/js-jquery-jknav-jk-binding-navigation.html
+ * @homepage  http://code.google.com/p/lilbtn/wiki/JsJqueryJknav
  * @example   http://lilbtn.googlecode.com/hg/src/static/js/jquery/jquery.jknav.demo.html
 */
 (function ($) {
@@ -144,6 +144,7 @@
 	$.jknav = {
 		index: {},
 		items: {},
+		opts: {},
 		default_options: {
 			up: 'k',
 			down: 'j',
@@ -165,10 +166,27 @@
 		init: function (options) {
 			var opts = $.extend($.extend({}, $.jknav.default_options), options);
 			$.jknav.index[opts.name] = null;
+			$.jknav.opts[opts.name] = opts;
 			$($.jknav.TARGET_KEYUP).keyup(function (e) {
 				keyup(e, opts);
 				});
 			log('new set "' + opts.name + '" initialzed.');
+			},
+		/**
+		 * Navigate up
+		 * @param {String} name name of set
+		 */
+		up: function (name) {
+			var opts = $.jknav.opts[name || 'default'];
+			keyup({target: {tagName: ''}, keyCode: opts.up.charCodeAt(0)}, opts);
+			},
+		/**
+		 * Navigate down
+		 * @param {String} name name of set
+		 */
+		down: function (name) {
+			var opts = $.jknav.opts[name || 'default'];
+			keyup({target: {tagName: ''}, keyCode: opts.down.charCodeAt(0)}, opts);
 			}
 		};
 	})(jQuery);
