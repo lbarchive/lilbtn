@@ -16,6 +16,7 @@ top:0;
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script>
 <script src="jquery.jknav.js"></script>
+<script src="jquery.hotkeys.js"></script>
 <script>
 function hl (item) {
 	var $item = $(item);
@@ -34,8 +35,12 @@ $(function () {
 	$('h2').jknav(hl, 'h2-nocircular');
 	$.jknav.init({name: 'h2-nocircular', up: 'u', down: 'd', easing: 'easeOutBounce', speed: 'slow', circular: false, reevaluate: false});
 
+	// Using default j, k
 	$('h2,h3').jknav(hl, 'h2h3');
 	$.jknav.init({name: 'h2h3', reevaluate: true});
+	// Bind up/down using jquery.hotkeys
+	$('html').bind('keyup', 'up', function(){$.jknav.up('h2h3');});
+	$('html').bind('keyup', 'down', function(){$.jknav.down('h2h3');});
 	});
 </script>
 </head>
@@ -47,6 +52,7 @@ $(function () {
 </div>
 <h1>jknav demo page</h1>
 <p>j, k - move between h2, h3 (easing: swing, speed: normal, reevalute: true)</p>
+<p>&lt;Up&gt;, &lt;Down&gt; - same as j, k. This is powered by <a href="https://github.com/jeresig/jquery.hotkeys">jquery.hotkeys</a> plugin. View source code for how to work with hotkeys plugin.</p>
 <p>h, l - move between h2 (easing: easeOutBounce, speed: slow, reevalute: false)</p>
 <p>u, d - move between h2 (easing: easeOutBounce, speed: slow, circular: false, reevalute: false)</p>
 <p>The box on top-right corner is to demonstrate that you could have a programmatic way to control jknav. In this box, user can use clicks to navigate.</p>
