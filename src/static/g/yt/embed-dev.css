@@ -1,0 +1,56 @@
+body {
+	background-color: black;
+	color: white;
+	font-family: sans;
+	font-size: 36px;
+	overflow: hidden;
+	text-shadow: 1px 1px 0 black;
+}
+#loader > .thumbnail {
+	cursor: pointer;
+	position: absolute;
+	z-index: 10;
+}
+#loader > .meta {
+	cursor: pointer;
+	height: 5em;
+	left: 1ex;
+	overflow: hidden;
+	position: absolute;
+	right: 1ex;
+	top: 1ex;
+	z-index: 100;
+}
+#loader > .watch-on-yt {
+	bottom: 3ex;
+	height: 1em;
+	position: absolute;
+	right: 1ex;
+	z-index: 100;
+}
+#loader > .watch-on-yt > a {
+	color: white;
+	padding: 0.5ex;
+	text-decoration: none;
+}
+#loader > .watch-on-yt > a:hover {
+	background-color: rgba(128,128,128,0.5);
+	border-radius: 1ex;
+}
+#loader > .watch-on-yt > a:focus {
+	outline: none;
+}
+#loader > .hint {
+	bottom: 1.5ex;
+	cursor: pointer;
+	font-size: 18px;
+	left: 1ex;
+	position: absolute;
+	z-index: 100;
+}
+iframe {
+	left: 0;
+	position: absolute;
+	top: 0;
+}
+/* vim: set sw=2 ts=2 noet: */

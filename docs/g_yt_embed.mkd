@@ -1,0 +1,53 @@
+Lightweight YouTube Player Loader is a way to reducing resource usage on client-side. It's written for bloggers mainly because some may embed many YouTube videos in just one post. This loader doesn't load Flash player by default, which is loaded currently default YouTube embed. It accesses YouTube API and shows thumbnail as well as the title and author.
+
+This is a continued work after I posted about the [loading time of YouTube player][ytplayer]. A quick test of five 720p videos in one page, the video quality isn't matter since no video is loaded after YouTube player loaded. The YouTube players take 2+ seconds, this loader only takes 0.8 seconds. The memory usage in Chromium 9, YouTube player uses less than 20MB but 70+ for Flash player. This loader uses ~30MB, only one third.
+
+[ytplayer]: http://blog.yjl.im/2011/02/how-much-time-does-youtube-embed-player.html
+
+## Current Status
+
+Experimental. Unexpected errors may occur, they should be seen as blank page. Please report if you encounter one.
+
+## Features
+
+* Showing thumbnail and slideshows of three thumbnails when cursor stays on iframe.
+* Providing title and author information and a direct link to YouTube video page.
+* All features of new YouTube iframe embed code will still work.
+* Supports HTTPS mode.
+
+## How to Use
+
+Whatever the new code is, e.g.
+
+    <iframe title="YouTube video player" width="853" height="510" src="http://www.youtube.com/embed/[VIDEO_ID]?rel=0" frameborder="0" allowfullscreen></iframe>
+
+You simply replace `"www.youtube.com"` with `"lilbtn.yjl.im"` or `"lilbtn.appspot.com"`,
+
+    <iframe title="YouTube video player" width="853" height="510" src="http://lilbtn.yjl.im/embed/[VIDEO_ID]?rel=0" frameborder="0" allowfullscreen></iframe>
+    <!-- or -->
+    <iframe title="YouTube video player" width="853" height="510" src="http://lilbtn.appspot.com/embed/[VIDEO_ID]?rel=0" frameborder="0" allowfullscreen></iframe>
+
+If it's a HTTPS mode, then you can only use `"lilbtn.appspot.com"` at this moment,
+    
+    <iframe title="YouTube video player" width="853" height="510" src="https://lilbtn.appspot.com/embed/[VIDEO_ID]?rel=0" frameborder="0" allowfullscreen></iframe>
+
+## How This Works
+
+The loader reads the link and extract the video ID, then accesses API for video information. Title, author, link, and thumbnails. It will show the default thumbnail and render the title and author, also a link to video page on YouTube. If user clicks, then the loader put the original YouTube embed code on, then removes itself.
+
+When cursor stays on the loader for a while, it will change the thumbnail every a few seconds, so user can see some snapshots.
+
+## Source Code
+
+You can view the [source code][gcode] (New BSD License) on Google Code.
+
+[gcode]: http://code.google.com/p/lilbtn/source/browse/#hg%2Fsrc%2Fstatic%2Fg%2Fyt
+
+## Support
+
+If you need troubleshooting help, please [post to discussion group][groups]. Any idea or feedback also are welcome to post as well. If you find bugs or want to request a feature, please use [issue tracker][issue], instead.
+
+In any case, please prefix the subject of your post or issue with `"[g-yt-embed]"`. Unless it's general to any video, say broken for any video, you must supply a YouTube video page URL which is affected, or your post or issue will be deleted and ignored.
+
+[groups]: https://groups.google.com/forum/#!forum/lilbtn
+[issue]: http://code.google.com/p/lilbtn/issues/list

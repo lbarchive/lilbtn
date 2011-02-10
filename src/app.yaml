@@ -31,5 +31,13 @@ handlers:
 - url: /g
   static_dir: static/g
 
+- url: /embed/embed.(css|js)
+  static_files: static/g/yt/embed.\1
+  upload: static/g/yt/embed.(css|js)
+
+- url: /embed/[_0-9a-zA-Z-]+
+  static_files: static/g/yt/embed.html
+  upload: static/g/yt/embed.html
+
 - url: /(donate|help)?
   script: index.py
