@@ -19,7 +19,7 @@ function scratch() {
 			};
 	$.post(document.location.protocol + '//' + document.location.host + '/itchape/scratch',
 		the_itch, function(data) {
-			if (data.ape_says.indexOf('Oooh') && window.localStorage) {
+			if (data.ape_says.indexOf('Oooh')>=0 && window.localStorage) {
 				localStorage['ia_secret_phrase'] = secret_phrase;
 				localStorage['ia_secret_key'] = secret_key;
 				localStorage['ia_ape_id'] = ape_id;
