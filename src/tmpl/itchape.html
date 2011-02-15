@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}ItchApe{% endblock %}
+
+{% block content %}
+{% include "itchape-header.html" %}
+<h2>ItchApe</h2>
+<div><span class="big-number">{{ scratches|intcomma }}</span> scratches since {{ scratches_added|date:"F j, Y" }}.</div>
+<div><span class="big-number">{{ itch_gets|intcomma }}</span> times those itches read since {{ itch_gets_added|date:"F j, Y" }}.</div>
+{% endblock %}
+{# vim: set sw=2 ts=2 noet: #}

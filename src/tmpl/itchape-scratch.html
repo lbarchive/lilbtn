@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}ItchApe{% endblock %}
+
+{% block content %}
+{% include "itchape-header.html" %}
+<script src="itchape.js"></script>
+<script>
+function scratch() {
+	var itch = $('input[name=itch]').val()
+	var secret_phrase = $('input[name=secret_phrase]').val()
+	var secret_key = $('input[name=secret_key]').val()
+	var ape_id = $('input[name=ape_id]').val()
+	var the_itch = {
+			itch: itch,
+			secret_phrase: secret_phrase,
+			secret_key: secret_key,
+			ape_id: ape_id
+			};
+	$.post(document.location.protocol + '//' + document.location.host + '/itchape/scratch',
+		the_itch, function(data) {
+			if (data.ape_says.indexOf('Oooh') && window.localStorage) {
+				localStorage['ia_secret_phrase'] = secret_phrase;
+				localStorage['ia_secret_key'] = secret_key;
+				localStorage['ia_ape_id'] = ape_id;
+				}
+		show_itch(data, 'itch');
+			}, 'json');
+	}
+$(function() {
+	if (document.location.hostname != 'localhost' && window.localStorage) {
+		$('input[name=secret_phrase]').val(localStorage['ia_secret_phrase']);
+		$('input[name=secret_key]').val(localStorage['ia_secret_key']);
+		$('input[name=ape_id]').val(localStorage['ia_ape_id']);
+		}
+});
+</script>
+<style>
+label {
+clear: both;
+display:block;
+width: 360px;
+}
+label > input {
+float: right;
+}
+input[type=button] {
+float: right;
+}
+#itch {
+background-color: #eee;
+border-radius: 0.5ex;
+-moz-border-radius: 0.5ex;
+-webkit-border-radius: 0.5ex;
+margin: 0.5ex;
+padding: 0.5ex;
+}
+</style>
+<h2>Scratch your ape!</h2>
+<form method="POST">
+<label>Description of the Itch <input type="text" name="itch" value="{{ itch }}" maxlength="140"/></label>
+<label>Secret Phrase <input type="text" name="secret_phrase" value="{{ secret_phrase }}" maxlength="40"/></label>
+<label>Secret Key <input type="text" name="secret_key" value="{{ secret_key }}" maxlength="16"/></label>
+<label>Ape ID <input type="text" name="ape_id" value="{{ ape_id }}" maxlength="16"/></label>
+<div style="clear:both;width:360px"><input type="button" value="Scratch" onclick="scratch()"/></div>
+</form>
+<br style="clear:both"/>
+<hr/>
+<div id="itch"></div>
+{% endblock %}
+{# vim: set sw=2 ts=2 noet: #}

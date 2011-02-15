@@ -1,0 +1,4 @@
+cron:
+- description: save counts into datastore
+  url: /itchape/cron
+  schedule: every 10 minutes synchronized

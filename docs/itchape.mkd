@@ -1,0 +1,90 @@
+[ItchApe][] is a simple solution which enables you showing off your ape's current itch to the world. You scratch your ape and its itch can be read.
+
+[ItchApe]: http://lilbtn.appspot.com/itchape/
+
+## Feature<del>s</del>
+
+* An itch can be described in up to 140 characters. (It's not a bird, it's an ape!) Every character will be shown literally, no HTML will take effective.
+
+### Notes
+
+* An itch can be kept up to an hour, but there is no guarantee since itches are stored in memory cache.
+* All itches will not be stored in database. Once they are gone from memory cache, they are gone.
+
+## Get started
+
+### Adopt an Ape
+
+You need to [adopt an ape][] first, you will get a **Secret Key** and **Ape ID** after you submit your **Secret Phrase**. Make sure you write down these three information.
+
+[adopt an ape]: https://lilbtn.appspot.com/itchape/adopt
+
+### Install the code
+
+Once you have your Ape ID, you can install the following HTML code,
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="http://lilbtn.appspot.com/itchape/itchape.js"></script>
+    <script>get_itch('<YOUR_APE_ID>', 'itchdiv')</script>
+    <div>My ItchApe: <span id="itchdiv"></span></div>
+
+The itch will be shown in `itchdiv`. It may read like
+
+<pre>My ItchApe: This is my itch (3 minutes ago)</pre>
+
+### Scratch your ape
+
+You can [scratch your ape][], enter the description of the itch and the phrase, key, and ID.
+
+[scratch your ape]: https://lilbtn.appspot.com/itchape/scratch
+
+### Scripts
+
+There are two basic Bash scripts for scratching and getting itch, you can download them on [Google Code][scripts].
+
+[scripts]: http://code.google.com/p/lilbtn/source/browse/#hg%2Fscripts
+
+## Developer's Information
+
+### Rendered code
+
+The rendered HTML code by `/itchape/itchape.js` looks like
+
+    <span class="itch">The description of itch.</span> <span class="itch_timesince">(3 mintues ago)</span>
+
+### `/itchape/getitch.json` API
+
+If you want to write your own script, here is how you get the itch. Send a GET request to `http://lilbtn.appspot.com/itchape/getitch.json?ape_id=<APE_ID>`, the return data is a JSON or JSONP if you also give `callback` in query string,
+
+    {
+    "ape_says": "...",
+    "itch": "...",
+    "scratched_at": 123456789.123
+    }
+
+* `ape_says` is actually the error message, it may have the values listed in `ape_says` section below.
+* `itch` is the description of the itch.
+* `scratched_at` is time of the ape gets scratched, the seconds after Unix epoch, it's a float number.
+
+### `/itchape/scratch` API
+
+If you request using GET method, then it will be a normal page. If you request using POST method, it's the API for scratching.
+
+You need to supply `secret_phrase`, `secret_key`, `ape_id`, and `itch`. If it's a successful call, then the data will be sent back as if you make a `getitch.json` call; if not, then you will get this json `{"ape_says":"I'm not your ape"}`.
+
+You can also supply `callback` for JSONP.
+
+### `ape_says` (error message)
+
+* `"Yeah, I was itching for that!"`: An itch description is retrieved successfully.
+* `"Not itching, yet!"`: There is no data in memory cache for that Ape ID.
+* `"I'm not your ape!"`: The phrase, key, and ID do not match, there you can't scratch this ape.
+* `"Oooh... that feels good!"`: Scratch is successful and wonderful.
+
+You have to parse these message, there is no error codes or simple true/false to know if it's successful or not. Ape doesn't know about what's an API, they say what they want.
+
+## Support
+
+If you have anything want to report or to request, please [submit an issue][] to issue tracker.
+
+[submit an issue]: http://code.google.com/p/lilbtn/issues/entry?summary=[itchape]%20Please%20enter%20summary

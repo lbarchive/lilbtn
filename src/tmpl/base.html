@@ -3,20 +3,19 @@
 <head>
   <title>{{ config.SITE_NAME }} » {% block title %}{% endblock %}</title>
 {% block head %}{% endblock %}
-{{ HEAD }}
+{{ HEAD|safe }}
 {% block after_HEAD %}{% endblock %}
-{{ config.BEFORE_HEAD_END }}
+{{ config.BEFORE_HEAD_END|safe }}
 </head>
 <body>
-{% include "topbar.html" %}
 <div id="wrap">
 {% include "header.html" %}
-{{ config.AFTER_HEADER }}
+{{ config.AFTER_HEADER|safe }}
 <div id="content">
 {% block content %}{% endblock %}
 </div>
 {% include "footer.html" %}
 </div>
-{{ config.BEFORE_BODY_END }}
+{{ config.BEFORE_BODY_END|safe }}
 </body>
 </html>

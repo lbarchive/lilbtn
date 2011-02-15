@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}ItchApe{% endblock %}
+
+{% block content %}
+{% include "itchape-header.html" %}
+<h2>Adopt an ape!</h2>
+<form method="POST">
+Secret Phrase for your ape: <input type="text" name="secret_phrase" value="{{ secret_phrase }}" maxlength="40"/>
+<input type="submit" value="Submit"/>
+</form>
+{% if show_result %}
+<hr/>
+<h2>Adoption Data</h2>
+You need to keep the following data:
+<pre>
+Secret Phrase: {{ secret_phrase }}
+Secret Key   : {{ secret_key }}
+Ape ID       : {{ ape_id }}
+</pre>
+And make sure no one knows the secret.
+{% endif %}
+{% endblock %}
+{# vim: set sw=2 ts=2 noet: #}

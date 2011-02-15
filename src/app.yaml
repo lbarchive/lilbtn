@@ -39,5 +39,16 @@ handlers:
   static_files: static/g/yt/embed.html
   upload: static/g/yt/embed.html
 
+- url: /itchape/itchape.js
+  static_files: static/js/itchape.js
+  upload: static/js/itchape.js
+
+- url: /itchape/(cron|getitch.json)?
+  script: itchape.py
+
+- url: /itchape/(adopt|scratch)
+  script: itchape.py
+  secure: always
+
 - url: /(donate|help)?
   script: index.py
