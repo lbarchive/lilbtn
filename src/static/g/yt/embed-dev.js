@@ -85,18 +85,43 @@ function init_loader() {
 		return;
 		}
 	var video_id = m[1];
-  $.getJSON(document.location.protocol + '//gdata.youtube.com/feeds/api/videos/' + video_id + "?v=2&fields=title,author(name),link[@rel='alternate'],media:group(media:thumbnail)&alt=json-in-script&callback=?", function(data) {
-			var entry = data.entry;
-			var title = entry.title.$t;
-			var url = entry.link[0].href;
-			// TODO Find out is that possible a video could have more than one author
-			var author = entry.author[0].name.$t;
-			var thumbs = {};
-			$.each(entry.media$group.media$thumbnail, function (idx, thumb) {
-				thumbs[thumb.yt$name] = thumb;
-				});
-			// Load the image
+	var yt_api_url = document.location.protocol + '//gdata.youtube.com/feeds/api/videos/' + video_id + "?v=2&fields=title,author(name),link[@rel='alternate'],media:group(media:thumbnail)&alt=json";
+  var yt_api_url_en = encodeURIComponent('select * from json where url="' + yt_api_url + '"');
+  var yql_url = document.location.protocol + '//query.yahooapis.com/v1/public/yql?q=' + yt_api_url_en + '&format=json&callback=?';
+  $.getJSON(yql_url, function(data) {
 			var loader = $('<div/>').attr('id', 'loader');
+			if (!data.query.results) {
+				$('<div/>')
+						.addClass('meta')
+						.append($('<div/>').addClass('title').text('Unable to get video information'))
+						.appendTo(loader)
+						;
+				url = 'http://www.youtube.com/watch?v=' + video_id;
+				$('<div/>')
+						.addClass('watch-on-yt')
+						.append($('<a/>')
+								.attr('href', url)
+								.html('Watch on YouTube &raquo;')
+								.click(function(evt) {
+										evt.preventDefault();
+										window.open(url);
+										return false;
+										})
+								)
+						.appendTo(loader)
+						;
+				loader.appendTo($('body'));
+				return;
+				}
+			var entry = data.query.results.json.entry;
+			var title = entry.title._t;
+			var url = entry.link.href;
+			// TODO Find out is that possible a video could have more than one author
+			var author = entry.author.name._t;
+			var thumbs = {};
+			$.each(entry.media_group.media_thumbnail, function (idx, thumb) {
+				thumbs[thumb.yt_name] = thumb;
+				});
 			// Video title
 			$('<div/>')
 					.addClass('meta')
