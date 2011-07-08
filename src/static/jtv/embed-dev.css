@@ -1,0 +1,39 @@
+body {
+	overflow: hidden;
+}
+
+#jtvembed {
+	left: 0;
+	position: absolute;
+	top: 0;
+	z-index: 0;
+}
+
+#chatbox {
+	opacity: 0;
+	overflow: auto;
+	position: absolute;
+	z-index: 100;
+	}
+
+#chatbox:hover {
+	opacity: 0.8;
+	}
+
+#controls {
+	background-color: gray;
+	border: white;
+	border-radius: 0.5ex;
+	left: 10px;
+	opacity: 0;
+	padding: 0.5ex;
+	position:absolute;
+	top: 44px;
+	z-index: 100;
+}
+
+#controls:hover {
+	opacity: 0.8;
+	}
+
+/* vim: set sw=2 ts=2 noet: */

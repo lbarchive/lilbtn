@@ -39,6 +39,14 @@ handlers:
   static_files: static/g/yt/embed.html
   upload: static/g/yt/embed.html
 
+- url: /cleanjtv/embed.(css|js)
+  static_files: static/jtv/embed.\1
+  upload: static/jtv/embed.(css|js)
+
+- url: /cleanjtv/.*
+  static_files: static/jtv/embed.html
+  upload: static/jtv/embed.html
+
 - url: /itchape/itchape.js
   static_files: static/js/itchape.js
   upload: static/js/itchape.js
