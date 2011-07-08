@@ -10,30 +10,35 @@ body {
 }
 
 #chatbox {
-	opacity: 0;
 	overflow: auto;
 	position: absolute;
-	z-index: 100;
-	}
-
-#chatbox:hover {
-	opacity: 0.8;
-	}
+	z-index: 50;
+}
 
 #controls {
 	background-color: gray;
 	border: white;
 	border-radius: 0.5ex;
 	left: 10px;
-	opacity: 0;
 	padding: 0.5ex;
 	position:absolute;
 	top: 44px;
 	z-index: 100;
 }
 
-#controls:hover {
-	opacity: 0.8;
-	}
+#controls > div {
+	margin-bottom: 5px;
+}
 
+#controls > div:last-child {
+  margin-bottom: 0;
+}
+
+#controls button {
+	width: 140px;
+}
+
+#controls button.half-size {
+	width: 70px;
+}
 /* vim: set sw=2 ts=2 noet: */
