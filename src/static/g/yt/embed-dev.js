@@ -84,19 +84,45 @@ function init_loader() {
 		// FIXME
 		return;
 		}
-	var video_id = m[1];
-	var yt_api_url = document.location.protocol + '//gdata.youtube.com/feeds/api/videos/' + video_id + "?v=2&fields=title,author(name),link[@rel='alternate'],media:group(media:thumbnail)&alt=json";
+	var search_id = m[1];
+	var search_type = 'videos';
+	var search_extra = '';
+  var search_fields = "title,author(name),link[@rel='alternate'],media:group(media:thumbnail)"
+//<iframe width="640" height="360" src="http://localhost:8080/embed/videoseries?index=7&amp;list=PL5D9354CAD0109DE5&amp;hl=en_US" frameborder="0" allowfullscreen></iframe>
+	if (search_id == 'videoseries') {
+	  search_type = 'playlists';
+		var playlist_id = /.*list=PL([0-9A-Z]+).*/.exec(document.location.search)[1];
+		console.log(playlist_id);
+		search_id = playlist_id;
+		search_fields = 'entry(' + search_fields + ')';
+		var start_index = /.*index=(\d+).*/.exec(document.location.search);
+		start_index = start_index ? parseInt(start_index[1]) + 1 : 1;
+		search_extra = '&start-index=' + start_index + '&max-results=1';
+		}
+	var yt_api_url = document.location.protocol
+	               + '//gdata.youtube.com/feeds/api/'
+								 + search_type
+								 + '/'
+								 + search_id
+								 + '?v=2&fields='
+								 + search_fields
+								 + '&alt=json'
+								 + search_extra;
+	console.log(yt_api_url);
   var yt_api_url_en = encodeURIComponent('select * from json where url="' + yt_api_url + '"');
   var yql_url = document.location.protocol + '//query.yahooapis.com/v1/public/yql?q=' + yt_api_url_en + '&format=json&callback=?';
   $.getJSON(yql_url, function(data) {
 			var loader = $('<div/>').attr('id', 'loader');
 			if (!data.query.results) {
+				// no results, something went wrong
 				$('<div/>')
 						.addClass('meta')
 						.append($('<div/>').addClass('title').text('Unable to get video information'))
 						.appendTo(loader)
 						;
-				url = 'http://www.youtube.com/watch?v=' + video_id;
+				var url = 'http://www.youtube.com/'
+				        + (search_type == 'videos' ?	'watch?v=' : 'playlist?list=')
+							  + search_id;
 				$('<div/>')
 						.addClass('watch-on-yt')
 						.append($('<a/>')
@@ -113,9 +139,13 @@ function init_loader() {
 				loader.appendTo($('body'));
 				return;
 				}
-			var entry = data.query.results.json.entry;
+			var entry = (search_type == 'videos')
+		            ? data.query.results.json.entry
+		            : data.query.results.json.feed.entry;
 			var title = entry.title._t;
 			var url = entry.link.href;
+			if (search_type == 'playlists')
+				url += '&list=PL' + search_id;
 			// TODO Find out is that possible a video could have more than one author
 			var author = entry.author.name._t;
 			var thumbs = {};
