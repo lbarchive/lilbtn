@@ -1,10 +1,10 @@
 body {
 	background-color: black;
 	color: white;
-	font-family: sans;
-	font-size: 36px;
+	font-family: 'Open Sans', sans;
+	font-size: 18px;
 	overflow: hidden;
-	text-shadow: 1px 1px 0 black;
+	text-shadow: 0 0 5px black;
 }
 #loader > .thumbnail {
 	cursor: pointer;
@@ -12,44 +12,85 @@ body {
 	z-index: 10;
 }
 #loader > .meta {
+	background: -moz-linear-gradient(left,  rgba(128,128,128,0.5) 0%, rgba(32,32,32,0.7) 50%, rgba(32,32,32,0.9) 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(128,128,128,0.5)), color-stop(50%,rgba(32,32,32,0.7)), color-stop(100%,rgba(32,32,32,0.9)));
+	background: -webkit-linear-gradient(left,  rgba(128,128,128,0.5) 0%,rgba(32,32,32,0.7) 50%,rgba(32,32,32,0.9) 100%);
+	background: -o-linear-gradient(left,  rgba(128,128,128,0.5) 0%,rgba(32,32,32,0.7) 50%,rgba(32,32,32,0.9) 100%);
+	background: -ms-linear-gradient(left,  rgba(128,128,128,0.5) 0%,rgba(32,32,32,0.7) 50%,rgba(32,32,32,0.9) 100%);
+	background: linear-gradient(left,  rgba(128,128,128,0.5) 0%,rgba(32,32,32,0.7) 50%,rgba(32,32,32,0.9) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80808080', endColorstr='#e6202020',GradientType=1 );
+
 	cursor: pointer;
-	height: 5em;
-	left: 1ex;
-	overflow: hidden;
+
+	height: 2.5em;
+
 	position: absolute;
-	right: 1ex;
-	top: 1ex;
+	left: 0;
+	right: 0;
+	top: 0;
+
 	z-index: 100;
 }
 #loader > .meta > .title {
+	position: absolute;
+	top: 0.25ex;
+  left: 0.5ex;
+  right: 20%;
+
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+
+	font-size: 1.5em;
+}
+#loader > .meta > .author {
+	padding-top: 0.5em;
+	
+	position: absolute;
+  top: 0.25ex;
+  left: 80%;
+  right: 0.5ex;
+
+  text-align: right;
+
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
 #loader > .watch-on-yt {
-	bottom: 3ex;
-	height: 1em;
 	position: absolute;
+	left: 50%;
 	right: 1ex;
+	bottom: 1.5ex;
+
+	text-align: right;
+
 	z-index: 100;
 }
 #loader > .watch-on-yt > a {
 	color: white;
 	padding: 0.5ex;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 	text-decoration: none;
+	background-color: rgba(128,0,0,0.75);
+	border-radius: 1ex;
 }
 #loader > .watch-on-yt > a:hover {
-	background-color: rgba(128,128,128,0.5);
-	border-radius: 1ex;
+	background-color: rgba(255,0,0,0.5);
 }
 #loader > .watch-on-yt > a:focus {
 	outline: none;
 }
 #loader > .hint {
-	bottom: 1.5ex;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	bottom: 1ex;
 	cursor: pointer;
-	font-size: 18px;
 	left: 1ex;
+	right: 50%;
 	position: absolute;
 	z-index: 100;
 }
