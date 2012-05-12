@@ -63,9 +63,15 @@ function end_slideshow() {
   }
 
 function load_yt_player() {
+  var autoplay = /.*autoplay=([01]).*/.exec(document.location.search);
+  autoplay = (autoplay) ? parseInt(autoplay[1]) : 1;
   var width = $(window).width();
   var height = $(window).height();
-  var html = '<iframe title="YouTube video player" width="' + width + '" height="' + height+ '" src="' + document.location.protocol+ '//www.youtube.com' + document.location.pathname + document.location.search + '" frameborder="0" allowfullscreen></iframe>';
+  var html = '<iframe title="YouTube video player" '
+           + 'width="' + width + '" ' 
+           + 'height="' + height 
+           + '" src="' + document.location.protocol+ '//www.youtube.com' + document.location.pathname + document.location.search + '&autoplay=' + autoplay
+           + '" frameborder="0" allowfullscreen></iframe>';
   $(html)
       .appendTo($('body'))
       .load(function() {
@@ -84,6 +90,9 @@ function init_loader() {
     // FIXME
     return;
     }
+  // indicates if it should play after load YT player
+  var autoplay = /.*autoplay=([01]).*/.exec(document.location.search);
+  autoplay = (autoplay) ? parseInt(autoplay[1]) : 1;
   var search_id = m[1];
   var search_type = 'videos';
   var search_extra = '';
@@ -92,7 +101,6 @@ function init_loader() {
   if (search_id == 'videoseries') {
     search_type = 'playlists';
     var playlist_id = /.*list=PL([0-9A-Z]+).*/.exec(document.location.search)[1];
-    console.log(playlist_id);
     search_id = playlist_id;
     search_fields = 'entry(' + search_fields + ')';
     var start_index = /.*index=(\d+).*/.exec(document.location.search);
@@ -108,7 +116,6 @@ function init_loader() {
                  + search_fields
                  + '&alt=json'
                  + search_extra;
-  console.log(yt_api_url);
   var yt_api_url_en = encodeURIComponent('select * from json where url="' + yt_api_url + '"');
   var yql_url = document.location.protocol + '//query.yahooapis.com/v1/public/yql?q=' + yt_api_url_en + '&format=json&callback=?';
   $.getJSON(yql_url, function(data) {
@@ -176,7 +183,7 @@ function init_loader() {
       // Hint text
       $('<div/>')
           .addClass('hint')
-          .text('Click to load YouTube Player')
+          .text('Click to ' + (autoplay ? 'play video' : 'load YouTube Player'))
           .appendTo(loader)
           ;
       loader.appendTo($('body'));
