@@ -125,7 +125,7 @@ function init_loader() {
 			// Video title
 			$('<div/>')
 					.addClass('meta')
-					.append($('<div/>').addClass('title').text(title))
+					.append($('<div/>', {alt: title, title: title}).addClass('title').text(title))
 					.append($('<div/>').addClass('author').text('by ' + author))
 					.appendTo(loader)
 					;

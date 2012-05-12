@@ -21,6 +21,11 @@ body {
 	top: 1ex;
 	z-index: 100;
 }
+#loader > .meta > .title {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
 #loader > .watch-on-yt {
 	bottom: 3ex;
 	height: 1em;
